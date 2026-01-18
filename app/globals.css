@@ -1,0 +1,100 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium White & Gold Light Mode */
+    --background: 40 20% 98%; /* Off-white #FAF9F6 */
+    --foreground: 0 0% 10%; /* Almost Black */
+    
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+ 
+    --primary: 45 65% 46%; /* Gold #C5A028 */
+    --primary-foreground: 0 0% 100%;
+ 
+    --secondary: 44 60% 85%; /* Champagne */
+    --secondary-foreground: 45 65% 30%;
+ 
+    --muted: 40 10% 94%;
+    --muted-foreground: 40 5% 40%;
+ 
+    --accent: 45 65% 46%;
+    --accent-foreground: 0 0% 100%;
+ 
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 45 30% 90%;
+    --input: 45 30% 90%;
+    --ring: 45 65% 46%;
+ 
+    --radius: 1rem;
+  }
+ 
+  .dark {
+    /* Premium Black & Gold Dark Mode */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+ 
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+ 
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+ 
+    --primary: 45 65% 46%;
+    --primary-foreground: 0 0% 100%;
+ 
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+ 
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+ 
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+ 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+ 
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 45 65% 46%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/60 rounded-full hover:bg-primary;
+}
+
+/* Glassmorphism Utility */
+.glass {
+  @apply bg-white/70 dark:bg-black/70 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl;
+}

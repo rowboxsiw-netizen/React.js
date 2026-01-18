@@ -1,4 +1,6 @@
 
+"use client";
+
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
@@ -7,7 +9,6 @@ import * as THREE from 'three';
 const ParticleField = () => {
   const ref = useRef<THREE.Points>(null!);
   
-  // Optimization: Lower particle count (800) for silky smooth performance on all devices
   const sphere = useMemo(() => {
     const points = new Float32Array(800 * 3);
     for (let i = 0; i < 800; i++) {
@@ -22,8 +23,9 @@ const ParticleField = () => {
   }, []);
 
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 20;
-    ref.current.rotation.y -= delta / 30;
+    if (!ref.current) return;
+    ref.current.rotation.x -= delta / 25;
+    ref.current.rotation.y -= delta / 35;
   });
 
   return (
@@ -42,11 +44,10 @@ const ParticleField = () => {
   );
 };
 
-export const ThreeBackground: React.FC = () => {
+export const ThreeBackground = () => {
   return (
-    <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
-      {/* Optimization: Cap DPR at 1.5 to prevent lag on 3x/4x retina screens */}
-      <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]}>
+    <div className="w-full h-full">
+      <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]} gl={{ antialias: false }}>
         <ParticleField />
       </Canvas>
     </div>

@@ -1,48 +1,40 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { SKILLS } from '../constants';
+"use client";
 
-export const Skills: React.FC = () => {
+import { motion } from 'framer-motion';
+import { SKILLS } from '@/data/portfolio';
+
+export const Skills = () => {
   return (
-    <section id="skills" className="py-24 bg-gray-100/50 dark:bg-black/20">
+    <section id="skills" className="py-24 bg-secondary/10">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-display font-bold mb-4"
-          >
-            My Expert <span className="text-primary">Arsenal</span>
-          </motion.h2>
-          <p className="text-gray-500">Continuously evolving with the latest 2026 tech standards.</p>
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Technical Arsenal</h2>
+          <p className="text-muted-foreground">The tools I use to forge digital products.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {SKILLS.map((skill, i) => (
             <motion.div
               key={skill.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="p-8 rounded-3xl bg-white dark:bg-surface border border-gray-100 dark:border-white/5 hover:shadow-2xl hover:shadow-primary/5 transition-all group"
+              viewport={{ once: true }}
+              className="p-6 bg-background rounded-3xl border border-border hover:border-primary/50 transition-all hover:-translate-y-1 group"
             >
-              <div className="flex justify-between items-end mb-4">
-                <span className="text-xl font-bold">{skill.name}</span>
-                <span className="text-primary font-display font-bold">{skill.level}%</span>
+              <div className="flex items-center justify-between mb-4">
+                <skill.icon className="text-primary group-hover:scale-110 transition-transform" />
+                <span className="font-mono text-xs font-bold bg-secondary/50 px-2 py-1 rounded-md">{skill.level}%</span>
               </div>
-              <div className="h-2 w-full bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+              <h3 className="font-bold text-lg mb-2">{skill.name}</h3>
+              <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
                 <motion.div 
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  className="h-full bg-gradient-to-r from-primary to-accent rounded-full"
+                  transition={{ duration: 1, delay: 0.5 }}
+                  className="h-full bg-primary"
                 />
-              </div>
-              <div className="mt-4 flex gap-2">
-                <span className="text-[10px] uppercase font-bold tracking-widest text-gray-400 group-hover:text-primary transition-colors">
-                  {skill.category}
-                </span>
               </div>
             </motion.div>
           ))}

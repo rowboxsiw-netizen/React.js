@@ -1,44 +1,36 @@
 
-import React, { useState, useEffect } from 'react';
-import { motion, useSpring } from 'framer-motion';
+"use client";
 
-export const CustomCursor: React.FC = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isPointer, setIsPointer] = useState(false);
+import React, { useEffect } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
-  const springConfig = { damping: 35, stiffness: 400 };
-  const cursorX = useSpring(0, springConfig);
-  const cursorY = useSpring(0, springConfig);
+export const CustomCursor = () => {
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  
+  const springConfig = { damping: 25, stiffness: 700 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-
-      const target = e.target as HTMLElement;
-      setIsPointer(
-        window.getComputedStyle(target).cursor === 'pointer' || 
-        target.tagName === 'A' || 
-        target.tagName === 'BUTTON'
-      );
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX - 16);
+      cursorY.set(e.clientY - 16);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', moveCursor);
+    return () => window.removeEventListener('mousemove', moveCursor);
   }, [cursorX, cursorY]);
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-6 h-6 rounded-full border border-primary/50 pointer-events-none z-[9999] hidden md:block"
+      className="fixed top-0 left-0 w-8 h-8 rounded-full border border-primary z-[9999] pointer-events-none hidden lg:block"
       style={{
-        x: cursorX,
-        y: cursorY,
-        translateX: '-50%',
-        translateY: '-50%',
-        scale: isPointer ? 2.5 : 1,
-        backgroundColor: isPointer ? 'rgba(197, 160, 40, 0.1)' : 'transparent',
-        boxShadow: isPointer ? '0 0 15px rgba(197, 160, 40, 0.2)' : 'none'
+        translateX: cursorXSpring,
+        translateY: cursorYSpring,
       }}
-    />
+    >
+      <div className="absolute inset-0 bg-primary/10 rounded-full blur-[2px]" />
+    </motion.div>
   );
 };

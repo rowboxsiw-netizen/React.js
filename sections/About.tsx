@@ -1,66 +1,60 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Award, Zap, Shield, Target } from 'lucide-react';
+"use client";
 
-export const About: React.FC = () => {
+import { motion } from 'framer-motion';
+import { Target, Zap, Shield } from 'lucide-react';
+
+export const About = () => {
   return (
-    <section id="about" className="py-24 relative bg-surface">
+    <section id="about" className="py-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            className="space-y-8"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-8 text-gray-900">
-              Architecting the <span className="text-primary">Future</span> of the Web.
+            <h2 className="text-4xl md:text-5xl font-display font-bold">
+              Engineering <br/>
+              <span className="text-primary">Perfection</span>
             </h2>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              With deep technical expertise and a sharp eye for design, I specialize in building high-performance applications that don't just work—they inspire. Every pixel is intentional, every line of code is optimized.
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              I don't just write code; I architect digital experiences. With a focus on performance, accessibility, and pixel-perfect design, I bridge the gap between creative vision and technical reality.
             </p>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid gap-6">
               {[
-                { icon: Award, title: "100+ Projects", desc: "Successfully Delivered" },
-                { icon: Zap, title: "Lag-Free UI", desc: "Performance Focused" },
-                { icon: Shield, title: "Scalable Arch", desc: "Enterprise Ready" },
-                { icon: Target, title: "Conversion", desc: "Growth Oriented" },
+                { icon: Zap, title: "High Performance", desc: "Optimized for core web vitals." },
+                { icon: Shield, title: "Secure Architecture", desc: "Best practices in frontend security." },
+                { icon: Target, title: "Pixel Perfect", desc: "Design implementation precision." }
               ].map((item, i) => (
-                <div key={i} className="p-6 rounded-3xl bg-background border border-primary/10 hover:border-primary/40 transition-all shadow-sm group">
-                  <item.icon className="text-primary mb-4 group-hover:scale-110 transition-transform" size={28} />
-                  <h4 className="font-bold text-lg text-gray-900">{item.title}</h4>
-                  <p className="text-sm text-gray-500">{item.desc}</p>
+                <div key={i} className="flex gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+                    <item.icon className="text-primary" size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-lg">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="aspect-square rounded-[3rem] overflow-hidden rotate-2 relative shadow-2xl border-8 border-white">
+            <div className="aspect-square rounded-[3rem] bg-secondary/30 relative overflow-hidden border-8 border-background shadow-2xl">
               <img 
                 src="https://picsum.photos/seed/bharat/800/800" 
-                alt="Bharat Singh" 
-                className="w-full h-full object-cover grayscale brightness-110 hover:grayscale-0 transition-all duration-700"
+                alt="Bharat Singh"
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
             </div>
-            
-            <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity }}
-              className="absolute -top-6 -right-6 p-6 bg-white rounded-2xl shadow-xl border border-primary/10"
-            >
-              <div className="text-3xl font-bold text-primary">8+</div>
-              <div className="text-xs font-bold uppercase tracking-wider text-gray-500">Years Exp</div>
-            </motion.div>
           </motion.div>
         </div>
       </div>
