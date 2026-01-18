@@ -1,4 +1,3 @@
 
-// Legacy SPA entry point - Next.js uses app/layout.tsx
-const entry = {};
-export default entry;
+// Deprecated: Next.js handles entry points automatically
+export default {};
