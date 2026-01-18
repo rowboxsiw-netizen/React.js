@@ -20,7 +20,8 @@
     "@react-three/fiber": "^9.0.0",
     "@react-three/drei": "^10.0.0",
     "clsx": "^2.1.0",
-    "tailwind-merge": "^2.2.0"
+    "tailwind-merge": "^2.2.0",
+    "lenis": "^1.1.18"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
