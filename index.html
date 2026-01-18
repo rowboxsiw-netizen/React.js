@@ -31,8 +31,9 @@
               primary: '#C5A028', // Premium Gold
               secondary: '#E5C76B', // Champagne
               accent: '#B8860B', // Dark Gold
-              background: '#FAF9F6', // Off-White
+              background: '#FAF9F6', // Off-White Ivory
               surface: '#FFFFFF', // Pure White
+              textMain: '#1A1A1A',
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
@@ -54,10 +55,12 @@
     <style>
       ::-webkit-scrollbar { width: 8px; }
       ::-webkit-scrollbar-track { background: #FAF9F6; }
-      ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 10px; }
+      ::-webkit-scrollbar-thumb { background: #C5A028; border-radius: 10px; }
       * { cursor: none !important; }
       @media (max-width: 768px) { * { cursor: auto !important; } }
       body { background-color: #FAF9F6; color: #1A1A1A; }
+      /* Optimization: Disable backdrop-blur on heavy mobile elements if needed, but for now just reducing blur radius */
+      .glass { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.7); }
     </style>
   <script type="importmap">
 {
@@ -76,7 +79,7 @@
 }
 </script>
 </head>
-  <body class="bg-background text-gray-900 selection:bg-primary selection:text-white transition-colors duration-500 overflow-x-hidden">
+  <body class="bg-background text-textMain selection:bg-primary selection:text-white transition-colors duration-500 overflow-x-hidden">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

@@ -11,23 +11,13 @@ import { Footer } from './components/Footer';
 import { Toaster } from './components/Toast';
 
 const App: React.FC = () => {
-  // Set to light mode for the White & Gold aesthetic
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
-
-  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+  // Purely Light Mode for the "Premium White & Gold" request
+  const isDarkMode = false;
 
   return (
-    <div className="relative w-full min-h-screen bg-background">
+    <div className="relative w-full min-h-screen bg-background text-textMain">
       <CustomCursor />
-      <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+      <Navbar toggleTheme={() => {}} isDarkMode={isDarkMode} />
       
       <main>
         <Hero />
@@ -40,9 +30,10 @@ const App: React.FC = () => {
       <Footer />
       <Toaster />
       
-      {/* Subtle non-laggy background texture */}
-      <div className="fixed inset-0 -z-50 pointer-events-none opacity-20">
-        <div className="absolute inset-0 bg-[radial-gradient(#C5A028_1px,transparent_1px)] [background-size:40px_40px]"></div>
+      {/* Performance-optimized static textured background instead of moving blurs */}
+      <div className="fixed inset-0 -z-50 pointer-events-none opacity-[0.03]">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/paper.png')]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(#C5A028_0.5px,transparent_0.5px)] [background-size:24px_24px]"></div>
       </div>
     </div>
   );
