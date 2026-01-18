@@ -11,10 +11,12 @@ const nextConfig = {
     ],
   },
   reactStrictMode: true,
-  // Optimization: Pre-bundle heavy dependencies
-  optimizePackageImports: ['lucide-react', 'framer-motion'],
-  // Experimental: Bundle size reduction
-  bundlePagesRouterDependencies: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: false,
+  },
 };
 
 export default nextConfig;

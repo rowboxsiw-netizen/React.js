@@ -28,10 +28,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${bricolage.variable} font-sans antialiased overflow-x-hidden selection:bg-primary/20`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <ToastProvider>
+            {/* SmoothScroll acts as our primary Client Boundary for Cursor and Lenis */}
             <SmoothScroll>
               <div className="noise-overlay" />
               {children}
