@@ -11,7 +11,8 @@ export interface Project {
 export interface Skill {
   name: string;
   level: number;
-  category: 'frontend' | 'backend' | 'design' | 'other';
+  category?: 'frontend' | 'backend' | 'design' | 'other';
+  icon: any;
 }
 
 export interface ToastMessage {

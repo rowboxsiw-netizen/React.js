@@ -3,6 +3,7 @@
 
 import { motion } from 'framer-motion';
 import { SKILLS } from '@/data/portfolio';
+import React from 'react';
 
 export const Skills = () => {
   return (
@@ -14,30 +15,33 @@ export const Skills = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-          {SKILLS.map((skill, i) => (
-            <motion.div
-              key={skill.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="p-6 bg-background rounded-3xl border border-border hover:border-primary/50 transition-all hover:-translate-y-1 group"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <skill.icon className="text-primary group-hover:scale-110 transition-transform" />
-                <span className="font-mono text-xs font-bold bg-secondary/50 px-2 py-1 rounded-md">{skill.level}%</span>
-              </div>
-              <h3 className="font-bold text-lg mb-2">{skill.name}</h3>
-              <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
-                <motion.div 
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  className="h-full bg-primary"
-                />
-              </div>
-            </motion.div>
-          ))}
+          {SKILLS.map((skill, i) => {
+            const IconComponent = skill.icon;
+            return (
+              <motion.div
+                key={skill.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="p-6 bg-background rounded-3xl border border-border hover:border-primary/50 transition-all hover:-translate-y-1 group"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  {IconComponent && <IconComponent className="text-primary group-hover:scale-110 transition-transform" size={24} />}
+                  <span className="font-mono text-xs font-bold bg-secondary/50 px-2 py-1 rounded-md">{skill.level}%</span>
+                </div>
+                <h3 className="font-bold text-lg mb-2">{skill.name}</h3>
+                <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
+                  <motion.div 
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.level}%` }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="h-full bg-primary"
+                  />
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

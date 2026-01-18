@@ -21,12 +21,13 @@ export const NAV_LINKS = [
 ];
 
 export const SKILLS: Skill[] = [
-  { name: 'React / Next.js', level: 98, category: 'frontend' },
-  { name: 'TypeScript', level: 95, category: 'frontend' },
-  { name: 'Node.js', level: 92, category: 'backend' },
-  { name: 'Three.js / WebGL', level: 85, category: 'frontend' },
-  { name: 'UI/UX Design', level: 90, category: 'design' },
-  { name: 'PostgreSQL', level: 88, category: 'backend' },
+  // Fixed: Added missing icon property to each skill object
+  { name: 'React / Next.js', level: 98, category: 'frontend', icon: Code2 },
+  { name: 'TypeScript', level: 95, category: 'frontend', icon: Code2 },
+  { name: 'Node.js', level: 92, category: 'backend', icon: Server },
+  { name: 'Three.js / WebGL', level: 85, category: 'frontend', icon: Cpu },
+  { name: 'UI/UX Design', level: 90, category: 'design', icon: Palette },
+  { name: 'PostgreSQL', level: 88, category: 'backend', icon: Globe },
 ];
 
 export const PROJECTS: Project[] = [
