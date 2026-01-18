@@ -28,16 +28,16 @@ export const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
           animate={{ opacity: 1, x: 0 }}
           className="text-2xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent"
         >
-          {PERSONAL_INFO.name.split(' ')[0]}<span className="text-gray-900 dark:text-white">.</span>
+          {PERSONAL_INFO.name.split(' ')[0]}<span className="text-gray-900">.</span>
         </motion.a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-1 bg-white/10 dark:bg-black/20 backdrop-blur-lg border border-white/10 dark:border-white/5 rounded-full px-2 py-1">
+        <div className="hidden md:flex items-center gap-1 bg-white/40 backdrop-blur-xl border border-primary/10 rounded-full px-2 py-1 shadow-sm">
           {NAV_LINKS.map((link) => (
             <a 
               key={link.label}
               href={link.href}
-              className="px-6 py-2 rounded-full text-sm font-medium hover:text-primary transition-colors relative group"
+              className="px-6 py-2 rounded-full text-sm font-semibold text-gray-800 hover:text-primary transition-colors relative group"
             >
               {link.label}
               <span className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-primary group-hover:w-1/2 transition-all duration-300 transform -translate-x-1/2"></span>
@@ -48,13 +48,13 @@ export const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
         <div className="flex items-center gap-4">
           <button 
             onClick={toggleTheme}
-            className="p-2.5 rounded-full bg-white/10 dark:bg-black/20 backdrop-blur-lg border border-white/10 dark:border-white/5 hover:scale-110 transition-transform"
+            className="p-2.5 rounded-full bg-white/40 backdrop-blur-xl border border-primary/10 hover:scale-110 transition-transform shadow-sm"
           >
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+            {isDarkMode ? <Sun size={20} className="text-primary" /> : <Moon size={20} className="text-primary" />}
           </button>
           
           <button 
-            className="md:hidden p-2.5 rounded-full bg-white/10 dark:bg-black/20 backdrop-blur-lg border border-white/10 dark:border-white/5"
+            className="md:hidden p-2.5 rounded-full bg-white/40 backdrop-blur-xl border border-primary/10"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -69,7 +69,7 @@ export const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-2xl border-b border-white/10 p-6 md:hidden"
+            className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-2xl border-b border-primary/10 p-6 md:hidden shadow-xl"
           >
             <div className="flex flex-col gap-4">
               {NAV_LINKS.map((link) => (
@@ -77,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-2xl font-display font-bold hover:text-primary"
+                  className="text-2xl font-display font-bold text-gray-900 hover:text-primary"
                 >
                   {link.label}
                 </a>

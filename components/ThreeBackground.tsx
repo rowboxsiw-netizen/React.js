@@ -7,9 +7,10 @@ import * as THREE from 'three';
 const ParticleField = () => {
   const ref = useRef<THREE.Points>(null!);
   
+  // Reduced particle count for better performance (lag fix)
   const sphere = useMemo(() => {
-    const points = new Float32Array(5000 * 3);
-    for (let i = 0; i < 5000; i++) {
+    const points = new Float32Array(1500 * 3);
+    for (let i = 0; i < 1500; i++) {
       const x = (Math.random() - 0.5) * 10;
       const y = (Math.random() - 0.5) * 10;
       const z = (Math.random() - 0.5) * 10;
@@ -21,8 +22,8 @@ const ParticleField = () => {
   }, []);
 
   useFrame((state, delta) => {
-    ref.current.rotation.x -= delta / 10;
-    ref.current.rotation.y -= delta / 15;
+    ref.current.rotation.x -= delta / 15;
+    ref.current.rotation.y -= delta / 20;
   });
 
   return (
@@ -30,10 +31,11 @@ const ParticleField = () => {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#6366f1"
-          size={0.03}
+          color="#C5A028"
+          size={0.04}
           sizeAttenuation={true}
           depthWrite={false}
+          opacity={0.6}
         />
       </Points>
     </group>
@@ -42,8 +44,8 @@ const ParticleField = () => {
 
 export const ThreeBackground: React.FC = () => {
   return (
-    <div className="absolute inset-0 z-0 opacity-50 pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 1] }}>
+    <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+      <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]}>
         <ParticleField />
       </Canvas>
     </div>

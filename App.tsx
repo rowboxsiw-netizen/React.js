@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { CustomCursor } from './components/CustomCursor';
 import { Hero } from './sections/Hero';
@@ -11,7 +11,8 @@ import { Footer } from './components/Footer';
 import { Toaster } from './components/Toast';
 
 const App: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  // Set to light mode for the White & Gold aesthetic
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -24,7 +25,7 @@ const App: React.FC = () => {
   const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
   return (
-    <div className="relative w-full min-h-screen">
+    <div className="relative w-full min-h-screen bg-background">
       <CustomCursor />
       <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
       
@@ -39,10 +40,9 @@ const App: React.FC = () => {
       <Footer />
       <Toaster />
       
-      {/* Background Gradients */}
-      <div className="fixed inset-0 -z-50 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/20 blur-[120px] animate-gradient-xy"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/20 blur-[120px] animate-gradient-xy"></div>
+      {/* Subtle non-laggy background texture */}
+      <div className="fixed inset-0 -z-50 pointer-events-none opacity-20">
+        <div className="absolute inset-0 bg-[radial-gradient(#C5A028_1px,transparent_1px)] [background-size:40px_40px]"></div>
       </div>
     </div>
   );
