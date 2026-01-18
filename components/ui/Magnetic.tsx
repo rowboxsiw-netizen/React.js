@@ -5,7 +5,6 @@ import React, { useRef, useState, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
 interface MagneticProps {
-  // Making children optional resolves JSX validation errors when used as a wrapper
   children?: ReactNode;
   strength?: number;
 }
@@ -15,7 +14,6 @@ export const Magnetic = ({ children, strength = 0.5 }: MagneticProps) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    // Added safety check for ref.current
     if (!ref.current) return;
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
