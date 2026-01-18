@@ -1,4 +1,6 @@
 
+import { LucideIcon } from 'lucide-react';
+
 export interface Project {
   id: string;
   title: string;
@@ -12,7 +14,7 @@ export interface Skill {
   name: string;
   level: number;
   category?: 'frontend' | 'backend' | 'design' | 'other';
-  icon: any;
+  icon: LucideIcon;
 }
 
 export interface ToastMessage {

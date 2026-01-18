@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Target, Zap, Shield } from 'lucide-react';
+import { CORE_VALUES } from '@/data/portfolio';
 
 export const About = () => {
   return (
@@ -24,21 +24,20 @@ export const About = () => {
             </p>
             
             <div className="grid gap-6">
-              {[
-                { icon: Zap, title: "High Performance", desc: "Optimized for core web vitals." },
-                { icon: Shield, title: "Secure Architecture", desc: "Best practices in frontend security." },
-                { icon: Target, title: "Pixel Perfect", desc: "Design implementation precision." }
-              ].map((item, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <item.icon className="text-primary" size={24} />
+              {CORE_VALUES.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <div key={i} className="flex gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <Icon className="text-primary" size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg">{item.title}</h4>
+                      <p className="text-sm text-muted-foreground">{item.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-lg">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </motion.div>
 

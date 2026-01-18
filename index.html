@@ -1,92 +1,32 @@
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bharat Singh | Creative Developer & Architect</title>
-    <meta name="description" content="Bharat Singh's world-class portfolio showcasing high-end development, architecture, and UI/UX design." />
-    <meta name="keywords" content="Bharat Singh, Fullstack Developer, UI/UX Architect, React Engineer, 2026 Web Design" />
-    <meta name="author" content="Bharat Singh" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bharatsingh.dev/" />
-    <meta property="og:title" content="Bharat Singh | Creative Developer & Architect" />
-    <meta property="og:description" content="Senior-level engineer delivering high-performance digital experiences." />
-    <meta property="og:image" content="https://picsum.photos/1200/630" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:wght@100..900&display=swap" rel="stylesheet" />
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              primary: '#C5A028', // Premium Gold
-              secondary: '#E5C76B', // Champagne
-              accent: '#B8860B', // Dark Gold
-              background: '#FAF9F6', // Off-White Ivory
-              surface: '#FFFFFF', // Pure White
-              textMain: '#1A1A1A',
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              display: ['Bricolage Grotesque', 'sans-serif'],
-            },
-            animation: {
-              'float': 'float 6s ease-in-out infinite',
-            },
-            keyframes: {
-              'float': {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              }
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #FAF9F6; }
-      ::-webkit-scrollbar-thumb { background: #C5A028; border-radius: 10px; }
-      * { cursor: none !important; }
-      @media (max-width: 768px) { * { cursor: auto !important; } }
-      body { background-color: #FAF9F6; color: #1A1A1A; }
-      /* Optimization: Disable backdrop-blur on heavy mobile elements if needed, but for now just reducing blur radius */
-      .glass { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.7); }
-    </style>
-  <script type="importmap">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bharat Singh Portfolio</title>
+<script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "framer-motion": "https://esm.sh/framer-motion@^12.27.0",
-    "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.5.0",
-    "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7",
-    "three": "https://esm.sh/three@^0.182.0",
+    "next-themes": "https://esm.sh/next-themes@^0.4.6",
     "vite": "https://esm.sh/vite@^7.3.1",
     "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "tailwindcss": "https://esm.sh/tailwindcss@^4.1.18",
     "clsx": "https://esm.sh/clsx@^2.1.1",
     "tailwind-merge": "https://esm.sh/tailwind-merge@^3.4.0",
     "next/": "https://esm.sh/next@^16.1.3/",
     "next": "https://esm.sh/next@^16.1.3",
-    "tailwindcss": "https://esm.sh/tailwindcss@^4.1.18",
-    "next-themes": "https://esm.sh/next-themes@^0.4.6"
+    "framer-motion": "https://esm.sh/framer-motion@^12.27.0",
+    "@react-three/fiber": "https://esm.sh/@react-three/fiber@^9.5.0",
+    "@react-three/drei": "https://esm.sh/@react-three/drei@^10.7.7",
+    "three": "https://esm.sh/three@^0.182.0"
   }
 }
 </script>
 </head>
-  <body class="bg-background text-textMain selection:bg-primary selection:text-white transition-colors duration-500 overflow-x-hidden">
+<body>
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
+</body>
 </html>

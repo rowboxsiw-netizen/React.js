@@ -1,5 +1,18 @@
 
-import { Github, Linkedin, Twitter, Code2, Database, Layout, Smartphone } from "lucide-react";
+import { 
+  Code2, 
+  Database, 
+  Layout, 
+  Smartphone, 
+  Cpu, 
+  Globe, 
+  Palette, 
+  Server,
+  Zap,
+  Shield,
+  Target
+} from "lucide-react";
+import { Skill, Project } from "@/types";
 
 export const PERSONAL_INFO = {
   name: "Bharat Singh",
@@ -18,16 +31,16 @@ export const NAV_LINKS = [
   { label: 'Contact', href: '#contact' },
 ];
 
-export const SKILLS = [
-  { name: 'React 19', level: 98, icon: Code2 },
-  { name: 'Next.js App Router', level: 96, icon: Layout },
-  { name: 'TypeScript', level: 95, icon: Code2 },
-  { name: 'Tailwind CSS', level: 99, icon: Layout },
-  { name: 'Framer Motion', level: 92, icon: Smartphone },
-  { name: 'Node.js', level: 88, icon: Database },
+export const SKILLS: Skill[] = [
+  { name: 'React 19', level: 98, icon: Code2, category: 'frontend' },
+  { name: 'Next.js App Router', level: 96, icon: Layout, category: 'frontend' },
+  { name: 'TypeScript', level: 95, icon: Code2, category: 'frontend' },
+  { name: 'Three.js / WebGL', level: 85, icon: Cpu, category: 'frontend' },
+  { name: 'Node.js', level: 88, icon: Server, category: 'backend' },
+  { name: 'PostgreSQL', level: 82, icon: Database, category: 'backend' },
 ];
 
-export const PROJECTS = [
+export const PROJECTS: Project[] = [
   {
     id: '1',
     title: 'Aurora Design System',
@@ -52,4 +65,10 @@ export const PROJECTS = [
     image: 'https://picsum.photos/seed/hyperion/800/600',
     link: '#',
   },
+];
+
+export const CORE_VALUES = [
+  { icon: Zap, title: "High Performance", desc: "Optimized for core web vitals." },
+  { icon: Shield, title: "Secure Architecture", desc: "Best practices in frontend security." },
+  { icon: Target, title: "Pixel Perfect", desc: "Design implementation precision." }
 ];
