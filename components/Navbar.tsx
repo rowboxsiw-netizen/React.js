@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import { Sun, Moon, Menu, X } from 'lucide-react';
 import { NAV_LINKS, PERSONAL_INFO } from '@/data/portfolio';
 import { cn } from '@/lib/utils';
+import { Magnetic } from './ui/Magnetic';
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -16,7 +17,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     setMounted(true);
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -24,61 +25,66 @@ export const Navbar = () => {
   return (
     <nav 
       className={cn(
-        "fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent",
-        scrolled ? "bg-background/80 backdrop-blur-lg border-primary/10 py-4" : "bg-transparent py-6"
+        "fixed top-6 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 w-[calc(100%-2rem)] max-w-5xl",
+        scrolled ? "top-4" : "top-8"
       )}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="text-2xl font-display font-bold tracking-tight">
+      <div className={cn(
+        "px-6 py-3 rounded-full flex items-center justify-between transition-all duration-500",
+        scrolled ? "glass-panel shadow-2xl border-white/20" : "bg-transparent border-transparent"
+      )}>
+        <a href="#" className="text-xl font-display font-bold tracking-tighter group flex items-center gap-1">
+          <span className="text-primary group-hover:rotate-12 transition-transform">✦</span>
           {PERSONAL_INFO.name.split(' ')[0]}
-          <span className="text-primary">.</span>
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {NAV_LINKS.map((link) => (
             <a 
               key={link.label}
               href={link.href}
-              className="text-sm font-medium hover:text-primary transition-colors relative group"
+              className="text-[13px] font-bold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors relative"
             >
               {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
             </a>
           ))}
           
-          {mounted && (
-            <button 
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-full hover:bg-primary/10 transition-colors"
-            >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
-          )}
+          <div className="flex items-center gap-4 pl-4 border-l border-border/50">
+            {mounted && (
+              <Magnetic strength={0.2}>
+                <button 
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  className="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-primary/10 transition-colors"
+                >
+                  {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+                </button>
+              </Magnetic>
+            )}
+          </div>
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X /> : <Menu />}
+        <button className="md:hidden glass-panel p-2 rounded-full" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X size={20}/> : <Menu size={20}/>}
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-b border-primary/10 overflow-hidden"
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            className="md:hidden mt-4 glass-panel rounded-[2rem] p-6 shadow-2xl overflow-hidden"
           >
-            <div className="flex flex-col p-6 gap-4">
+            <div className="flex flex-col gap-6 items-center">
               {NAV_LINKS.map((link) => (
                 <a 
                   key={link.label} 
                   href={link.href} 
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium"
+                  className="text-2xl font-display font-bold hover:text-primary transition-colors"
                 >
                   {link.label}
                 </a>

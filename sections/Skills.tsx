@@ -7,37 +7,52 @@ import React from 'react';
 
 export const Skills = () => {
   return (
-    <section id="skills" className="py-24 bg-secondary/10">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">Technical Arsenal</h2>
-          <p className="text-muted-foreground">The tools I use to forge digital products.</p>
+    <section id="skills" className="py-32 relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-24">
+          <span className="text-[11px] font-bold tracking-[0.4em] text-primary uppercase mb-4 block">Capabilities</span>
+          <h2 className="text-5xl md:text-7xl font-display font-bold tracking-tighter">TECHNICAL ARSENAL</h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {SKILLS.map((skill, i) => {
-            const IconComponent = skill.icon;
+            const Icon = skill.icon;
             return (
               <motion.div
                 key={skill.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
                 viewport={{ once: true }}
-                className="p-6 bg-background rounded-3xl border border-border hover:border-primary/50 transition-all hover:-translate-y-1 group"
+                className="group relative flex flex-col p-8 glass-panel rounded-[2.5rem] hover:border-primary/40 transition-all duration-500"
               >
-                <div className="flex items-center justify-between mb-4">
-                  {IconComponent && <IconComponent className="text-primary group-hover:scale-110 transition-transform" size={24} />}
-                  <span className="font-mono text-xs font-bold bg-secondary/50 px-2 py-1 rounded-md">{skill.level}%</span>
+                <div className="flex items-center justify-between mb-8">
+                   <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                    <Icon size={28} />
+                   </div>
+                   <div className="text-right">
+                    <div className="text-xs font-bold tracking-widest text-muted-foreground uppercase mb-1">Expertise</div>
+                    <div className="text-2xl font-display font-bold text-primary">{skill.level}%</div>
+                   </div>
                 </div>
-                <h3 className="font-bold text-lg mb-2">{skill.name}</h3>
-                <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="h-full bg-primary"
-                  />
+                
+                <h3 className="text-2xl font-bold mb-4 tracking-tight">{skill.name}</h3>
+                
+                <div className="space-y-4">
+                  <div className="h-1 w-full bg-secondary rounded-full overflow-hidden">
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+                      className="h-full bg-primary"
+                    />
+                  </div>
+                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">
+                    {skill.category || 'Core Stack'} / Production Grade
+                  </p>
                 </div>
               </motion.div>
             );

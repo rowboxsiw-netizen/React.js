@@ -11,7 +11,8 @@ interface ToastContextType {
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
-export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+// Making children optional in the generic type prevents "property missing" errors during JSX parsing in layout.tsx
+export const ToastProvider: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   const addToast = useCallback((message: string, type: ToastMessage['type']) => {
