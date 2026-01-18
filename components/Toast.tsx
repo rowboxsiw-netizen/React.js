@@ -1,4 +1,6 @@
 
+"use client";
+
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ToastMessage } from '../types';
@@ -52,17 +54,6 @@ export const useToast = () => {
   return context;
 };
 
-// Wrap top level Toaster for convenience in index.tsx
 export const Toaster: React.FC = () => {
-  return null; // The ToastProvider handles the rendering
+  return null; // Logic is handled within ToastProvider
 };
-
-// Re-export provider to be used in index.tsx
-import App from '../App';
-export default function AppWithProvider() {
-    return (
-        <ToastProvider>
-            <App />
-        </ToastProvider>
-    );
-}

@@ -1,14 +1,16 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import AppWithProvider from './components/Toast';
+import App from './App';
 
-const rootElement = document.getElementById('root');
-if (!rootElement) throw new Error("Root element not found");
+// This file is used for legacy SPA environments. Next.js uses app/layout.tsx.
+const rootElement = typeof document !== 'undefined' ? document.getElementById('root') : null;
 
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <AppWithProvider />
-  </React.StrictMode>
-);
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+}
