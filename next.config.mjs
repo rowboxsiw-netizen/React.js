@@ -11,6 +11,10 @@ const nextConfig = {
     ],
   },
   reactStrictMode: true,
+  // Optimization: Pre-bundle heavy dependencies
+  optimizePackageImports: ['lucide-react', 'framer-motion'],
+  // Experimental: Bundle size reduction
+  bundlePagesRouterDependencies: true,
 };
 
 export default nextConfig;
