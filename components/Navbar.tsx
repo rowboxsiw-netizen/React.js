@@ -31,29 +31,29 @@ export const Navbar = () => {
       )}
     >
       <div className={cn(
-        "px-6 py-3 rounded-full flex items-center justify-between transition-all duration-500",
+        "px-8 py-3 rounded-full flex items-center justify-between transition-all duration-500",
         scrolled ? "glass-panel shadow-2xl border-white/20" : "bg-transparent border-transparent"
       )}>
-        <a href="#" className="flex items-center gap-3 group relative">
-          <div className="relative w-10 h-10 flex items-center justify-center">
-            {/* Ambient Glow behind Logo */}
-            <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full scale-0 group-hover:scale-125 transition-transform duration-700 ease-out" />
+        <a href="#" className="flex items-center gap-4 group relative">
+          <div className="relative w-14 h-14 flex items-center justify-center">
+            {/* Ambient Glow behind Logo - Scaled for Medium Size */}
+            <div className="absolute inset-0 bg-primary/25 blur-2xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-700 ease-out" />
             
             <Image 
               src={PERSONAL_INFO.logo} 
               alt={`${PERSONAL_INFO.name} Logo`}
-              width={36}
-              height={36}
+              width={48}
+              height={48}
               className="relative z-10 object-contain brightness-0 dark:brightness-100 group-hover:rotate-[360deg] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
               priority
             />
           </div>
           
           <div className="flex flex-col">
-            <span className="text-xl font-display font-bold tracking-tighter group-hover:text-primary transition-colors duration-300">
+            <span className="text-2xl font-display font-bold tracking-tighter group-hover:text-primary transition-colors duration-300 leading-none mb-1">
               {PERSONAL_INFO.name}
             </span>
-            <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-muted-foreground opacity-60">
+            <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-muted-foreground opacity-60">
               Architecture
             </span>
           </div>
