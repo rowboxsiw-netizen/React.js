@@ -17,6 +17,7 @@ import { Skill, Project } from "@/types";
 export const PERSONAL_INFO = {
   name: "Bharat Singh",
   role: "Principal Frontend Engineer",
+  logo: "https://cdn.authorize.qzz.io/Authorize.svg",
   email: "noreply@authorize.qzz.io",
   whatsapp: "https://wa.me/9779826048177?text=Hello%20Bharat%20Singh",
   whatsappIcon: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/662px-WhatsApp_icon.png",

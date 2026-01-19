@@ -8,6 +8,7 @@ import { Sun, Moon, Menu, X } from 'lucide-react';
 import { NAV_LINKS, PERSONAL_INFO } from '@/data/portfolio';
 import { cn } from '@/lib/utils';
 import { Magnetic } from './ui/Magnetic';
+import Image from 'next/image';
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -33,9 +34,29 @@ export const Navbar = () => {
         "px-6 py-3 rounded-full flex items-center justify-between transition-all duration-500",
         scrolled ? "glass-panel shadow-2xl border-white/20" : "bg-transparent border-transparent"
       )}>
-        <a href="#" className="text-xl font-display font-bold tracking-tighter group flex items-center gap-1">
-          <span className="text-primary group-hover:rotate-12 transition-transform">✦</span>
-          {PERSONAL_INFO.name.split(' ')[0]}
+        <a href="#" className="flex items-center gap-3 group relative">
+          <div className="relative w-10 h-10 flex items-center justify-center">
+            {/* Ambient Glow behind Logo */}
+            <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full scale-0 group-hover:scale-125 transition-transform duration-700 ease-out" />
+            
+            <Image 
+              src={PERSONAL_INFO.logo} 
+              alt={`${PERSONAL_INFO.name} Logo`}
+              width={36}
+              height={36}
+              className="relative z-10 object-contain brightness-0 dark:brightness-100 group-hover:rotate-[360deg] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              priority
+            />
+          </div>
+          
+          <div className="flex flex-col">
+            <span className="text-xl font-display font-bold tracking-tighter group-hover:text-primary transition-colors duration-300">
+              {PERSONAL_INFO.name}
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.3em] font-bold text-muted-foreground opacity-60">
+              Architecture
+            </span>
+          </div>
         </a>
 
         {/* Desktop Nav */}
@@ -56,6 +77,7 @@ export const Navbar = () => {
                 <button 
                   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                   className="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:bg-primary/10 transition-colors"
+                  aria-label="Toggle Theme"
                 >
                   {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
                 </button>
