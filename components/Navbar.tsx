@@ -35,15 +35,15 @@ export const Navbar = () => {
         scrolled ? "glass-panel shadow-2xl border-white/20" : "bg-transparent border-transparent"
       )}>
         <a href="#" className="flex items-center gap-4 group relative">
-          <div className="relative w-14 h-14 flex items-center justify-center">
-            {/* Ambient Glow behind Logo - Scaled for Medium Size */}
-            <div className="absolute inset-0 bg-primary/25 blur-2xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-700 ease-out" />
+          <div className="relative w-[50px] h-[50px] flex items-center justify-center">
+            {/* Ambient Glow behind Logo - Balanced for 50x50 */}
+            <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full scale-0 group-hover:scale-125 transition-transform duration-700 ease-out" />
             
             <Image 
               src={PERSONAL_INFO.logo} 
               alt={`${PERSONAL_INFO.name} Logo`}
-              width={48}
-              height={48}
+              width={50}
+              height={50}
               className="relative z-10 object-contain brightness-0 dark:brightness-100 group-hover:rotate-[360deg] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
               priority
             />
